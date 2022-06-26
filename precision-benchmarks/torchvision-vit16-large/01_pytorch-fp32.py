@@ -21,4 +21,7 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, device, schedu
             model.train()
 
             ### FORWARD AND BACK PROP
-            features, targets = features.to(device), targets.to(devic
+            features, targets = features.to(device), targets.to(device)
+            logits = model(features)
+            loss = F.cross_entropy(logits, targets)
+       
