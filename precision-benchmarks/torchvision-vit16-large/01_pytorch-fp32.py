@@ -24,4 +24,8 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, device, schedu
             features, targets = features.to(device), targets.to(device)
             logits = model(features)
             loss = F.cross_entropy(logits, targets)
-       
+            loss.backward()
+
+            ### UPDATE MODEL PARAMETERS
+            optimizer.step()
+            opti
