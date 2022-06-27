@@ -28,4 +28,8 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, device, schedu
 
             ### UPDATE MODEL PARAMETERS
             optimizer.step()
-            opti
+            optimizer.zero_grad()
+
+            ### LOGGING
+            if not batch_idx % 300:
+                print(f"Epo
