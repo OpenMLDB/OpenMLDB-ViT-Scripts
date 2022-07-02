@@ -48,4 +48,7 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, device, schedu
             for (features, targets) in val_loader:
                 features, targets = features.to(device), targets.to(device)
                 outputs = model(features)
-                predicted_labels = torch.argmax(o
+                predicted_labels = torch.argmax(outputs, 1)
+                val_acc.update(predicted_labels, targets)
+
+            print(f"Epoch: {epoch+1:04d}/{num_epochs:04d} | Train
