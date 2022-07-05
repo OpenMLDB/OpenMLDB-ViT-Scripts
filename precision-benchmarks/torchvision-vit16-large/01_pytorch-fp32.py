@@ -58,4 +58,9 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, device, schedu
 if __name__ == "__main__":
 
     print("PyTorch:", torch.__version__)
-    
+    torch.set_float32_matmul_precision("medium")
+
+    device = torch.device("cuda")
+
+    ##########################
+    ### 1 Loa
