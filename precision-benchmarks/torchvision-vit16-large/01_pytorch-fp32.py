@@ -63,4 +63,6 @@ if __name__ == "__main__":
     device = torch.device("cuda")
 
     ##########################
-    ### 1 Loa
+    ### 1 Loading the Dataset
+    ##########################
+    train_transforms = transforms.Compose([transforms.Resize((224, 
