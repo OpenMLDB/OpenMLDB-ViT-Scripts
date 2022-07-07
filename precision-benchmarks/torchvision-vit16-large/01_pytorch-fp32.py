@@ -70,4 +70,7 @@ if __name__ == "__main__":
                                            transforms.ToTensor()])
 
     test_transforms = transforms.Compose([transforms.Resize((224, 224)),
-             
+                                          #transforms.CenterCrop((224, 224)),
+                                          transforms.ToTensor()])
+
+ 
