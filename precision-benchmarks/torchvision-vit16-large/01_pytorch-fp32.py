@@ -76,4 +76,7 @@ if __name__ == "__main__":
     train_loader, val_loader, test_loader = get_dataloaders_cifar10(
         batch_size=32,
         num_workers=4,
-       
+        train_transforms=train_transforms,
+        test_transforms=test_transforms,
+        validation_fraction=0.1,
+        do
