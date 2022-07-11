@@ -79,4 +79,8 @@ if __name__ == "__main__":
         train_transforms=train_transforms,
         test_transforms=test_transforms,
         validation_fraction=0.1,
-        do
+        download=True
+    )
+
+    #########################################
+    ### 2 Initializing the Model
