@@ -84,3 +84,8 @@ if __name__ == "__main__":
 
     #########################################
     ### 2 Initializing the Model
+    #########################################
+
+    model = vit_l_16(weights=ViT_L_16_Weights.IMAGENET1K_V1)
+
+   
