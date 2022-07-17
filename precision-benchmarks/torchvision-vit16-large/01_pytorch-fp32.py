@@ -90,4 +90,7 @@ if __name__ == "__main__":
 
     # replace output layer
     model.heads.head = torch.nn.Linear(in_features=1024, out_features=10)
-    mod
+    model.to(device)
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    scheduler = Exponen
