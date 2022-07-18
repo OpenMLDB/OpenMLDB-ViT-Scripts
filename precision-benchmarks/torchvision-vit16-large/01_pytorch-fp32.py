@@ -93,4 +93,8 @@ if __name__ == "__main__":
     model.to(device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
-    scheduler = Exponen
+    scheduler = ExponentialLR(optimizer, gamma=0.9)
+
+    #########################################
+    ### 3 Finetuning
+    ##################
