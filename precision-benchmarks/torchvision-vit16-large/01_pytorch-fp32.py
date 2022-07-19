@@ -106,4 +106,10 @@ if __name__ == "__main__":
         optimizer=optimizer,
         train_loader=train_loader,
         val_loader=val_loader,
-        device=device
+        device=device,
+        scheduler=scheduler
+    )
+
+    end = time.time()
+    elapsed = end-start
+    print(f"Time elapsed {elapsed/
