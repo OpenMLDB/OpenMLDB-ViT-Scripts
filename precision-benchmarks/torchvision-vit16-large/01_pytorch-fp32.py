@@ -103,4 +103,7 @@ if __name__ == "__main__":
     train(
         num_epochs=3,
         model=model,
- 
+        optimizer=optimizer,
+        train_loader=train_loader,
+        val_loader=val_loader,
+        device=device
