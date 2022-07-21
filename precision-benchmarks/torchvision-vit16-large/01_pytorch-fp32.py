@@ -115,4 +115,8 @@ if __name__ == "__main__":
     print(f"Time elapsed {elapsed/60:.2f} min")
     print(f"Memory used: {torch.cuda.max_memory_reserved() / 1e9:.02f} GB")
 
-    ##############
+    #########################################
+    ### 4 Evaluation
+    #########################################
+
+    with tor
