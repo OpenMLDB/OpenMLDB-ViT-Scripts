@@ -119,4 +119,6 @@ if __name__ == "__main__":
     ### 4 Evaluation
     #########################################
 
-    with tor
+    with torch.no_grad():
+        model.eval()
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(de
