@@ -121,4 +121,7 @@ if __name__ == "__main__":
 
     with torch.no_grad():
         model.eval()
-        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(de
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(device)
+
+        for (features, targets) in test_loader:
+            features, targets = features.to(devic
