@@ -124,4 +124,7 @@ if __name__ == "__main__":
         test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(device)
 
         for (features, targets) in test_loader:
-            features, targets = features.to(devic
+            features, targets = features.to(device), targets.to(device)
+            outputs = model(features)
+            predicted_labels = torch.argmax(outputs, 1)
+          
