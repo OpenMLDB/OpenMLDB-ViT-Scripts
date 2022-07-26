@@ -127,4 +127,6 @@ if __name__ == "__main__":
             features, targets = features.to(device), targets.to(device)
             outputs = model(features)
             predicted_labels = torch.argmax(outputs, 1)
-          
+            test_acc.update(predicted_labels, targets)
+
+    print(f"Test accuracy {test_acc.compute()*100:.2f}%")
