@@ -41,4 +41,7 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
                 train_acc.update(predicted_labels, targets)
         scheduler.step()
 
-     
+        ### MORE LOGGING
+        model.eval()
+        with torch.no_grad():
+            val_acc = torchmetrics.Accuracy(task="
