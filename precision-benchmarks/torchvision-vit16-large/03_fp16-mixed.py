@@ -64,4 +64,7 @@ if __name__ == "__main__":
     L.seed_everything(123)
 
     ##########################
-    ### 1 Loading
+    ### 1 Loading the Dataset
+    ##########################
+    train_transforms = transforms.Compose([transforms.Resize((224, 224)),
+       
