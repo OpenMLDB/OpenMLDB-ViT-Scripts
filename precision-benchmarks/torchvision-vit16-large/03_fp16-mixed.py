@@ -95,4 +95,8 @@ if __name__ == "__main__":
     optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
     scheduler = ExponentialLR(optimizer, gamma=0.9)
 
-    ############
+    #########################################
+    ### 3 Launch Fabric
+    #########################################
+
+    fabric =
