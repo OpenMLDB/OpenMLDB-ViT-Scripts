@@ -99,4 +99,7 @@ if __name__ == "__main__":
     ### 3 Launch Fabric
     #########################################
 
-    fabric =
+    fabric = Fabric(accelerator="cuda", devices=1, precision="16-mixed")
+    fabric.launch()
+
+    train_loader, val_lo
