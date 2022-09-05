@@ -118,4 +118,10 @@ if __name__ == "__main__":
         train_loader=train_loader,
         val_loader=val_loader,
         fabric=fabric,
-        schedul
+        scheduler=scheduler
+    )
+
+    end = time.time()
+    elapsed = end-start
+    fabric.print(f"Time elapsed {elapsed/60:.2f} min")
+    fabric.prin
