@@ -131,4 +131,5 @@ if __name__ == "__main__":
     #########################################
 
     with torch.no_grad():
-        model.
+        model.eval()
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabri
