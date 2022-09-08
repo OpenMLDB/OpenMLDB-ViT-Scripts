@@ -127,4 +127,8 @@ if __name__ == "__main__":
     fabric.print(f"Memory used: {torch.cuda.max_memory_reserved() / 1e9:.02f} GB")
 
     #########################################
-    
+    ### 5 Evaluation
+    #########################################
+
+    with torch.no_grad():
+        model.
