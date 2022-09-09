@@ -132,4 +132,8 @@ if __name__ == "__main__":
 
     with torch.no_grad():
         model.eval()
-        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabri
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
+
+        for (features, targets) in test_loader:
+            outputs = model(features)
+            predicted
