@@ -1,0 +1,63 @@
+
+import time
+
+import lightning as L
+from lightning import Fabric
+import torch
+import torch.nn.functional as F
+from torch.optim.lr_scheduler import ExponentialLR
+import torchmetrics
+from torchvision import transforms
+from torchvision.models import vit_l_16
+from torchvision.models import ViT_L_16_Weights
+
+from local_utilities import get_dataloaders_cifar10
+
+
+def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, scheduler):
+
+    for epoch in range(num_epochs):
+        train_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
+
+        model.train()
+        for batch_idx, (features, targets) in enumerate(train_loader):
+            model.train()
+
+            ### FORWARD AND BACK PROP
+            logits = model(features)
+            loss = F.cross_entropy(logits, targets)
+            loss.backward()
+
+            ### UPDATE MODEL PARAMETERS
+            optimizer.step()
+            optimizer.zero_grad()
+
+            ### LOGGING
+            if not batch_idx % 300:
+                fabric.print(f"Epoch: {epoch+1:04d}/{num_epochs:04d} | Batch {batch_idx:04d}/{len(train_loader):04d} | Loss: {loss:.4f}")
+
+            model.eval()
+            with torch.no_grad():
+                predicted_labels = torch.argmax(logits, 1)
+                train_acc.update(predicted_labels, targets)
+        scheduler.step()
+
+        ### MORE LOGGING
+        model.eval()
+        with torch.no_grad():
+            val_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
+
+            for (features, targets) in val_loader:
+                outputs = model(features)
+                predicted_labels = torch.argmax(outputs, 1)
+                val_acc.update(predicted_labels, targets)
+
+            fabric.print(f"Epoch: {epoch+1:04d}/{num_epochs:04d} | Train acc.: {train_acc.compute()*100:.2f}% | Val acc.: {val_acc.compute()*100:.2f}%")
+            train_acc.reset(), val_acc.reset()
+
+
+if __name__ == "__main__":
+
+    print("PyTorch:", torch.__version__)
+    print("Lightning:", L.__version__)
+    torch.set_float32_matmul_precision("medium")

@@ -139,4 +139,4 @@ if __name__ == "__main__":
             predicted_labels = torch.argmax(outputs, 1)
             test_acc.update(predicted_labels, targets)
 
-    fabric.print(
+    fabric.print(f"Test accuracy {test_acc.compute()*100:.2f}%")
