@@ -7,4 +7,6 @@
 | [05_fp16-full.py](http://05_fp16-full.py)                    | vit_l_16 | medium           | 9.19 min  | 8.43 GB  | 10.02%         | 10.00%        |
 | [06_bf16-full.py](http://06_bf16-full.py)                    | vit_l_16 | medium           | 9.37 min  | 8.43 GB  | 99.92%         | 97.86%        |
 
-| PyTorch: 2.1.0
+| PyTorch: 2.1.0+cu121 |
+| -------------------- |
+| Lightning: 2.1.0     |
