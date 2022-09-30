@@ -13,4 +13,7 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
                             download=True):
 
     if train_transforms is None:
-        train_transf
+        train_transforms = transforms.ToTensor()
+
+    if test_transforms is None:
+        test_transforms = transfo
