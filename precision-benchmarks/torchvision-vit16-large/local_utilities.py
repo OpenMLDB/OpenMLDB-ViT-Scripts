@@ -28,4 +28,8 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
                                      transform=test_transforms)
 
     test_dataset = datasets.CIFAR10(root='data',
-                                
+                                    train=False,
+                                    transform=test_transforms)
+
+    if validation_fraction is not None:
+      
