@@ -48,4 +48,8 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
                                   batch_size=batch_size,
                                   num_workers=num_workers,
                                   drop_last=True,
-        
+                                  sampler=train_sampler)
+
+    else:
+        train_loader = DataLoader(dataset=train_dataset,
+     
