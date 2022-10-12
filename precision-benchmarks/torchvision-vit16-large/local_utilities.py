@@ -60,3 +60,7 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
     test_loader = DataLoader(dataset=test_dataset,
                              batch_size=batch_size,
                              num_workers=num_workers,
+                             shuffle=False)
+
+    if validation_fraction is None:
+        return train_lo
