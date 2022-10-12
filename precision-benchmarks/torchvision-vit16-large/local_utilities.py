@@ -57,4 +57,6 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
                                   drop_last=True,
                                   shuffle=True)
 
-    test_loader = DataLoader(dataset=test
+    test_loader = DataLoader(dataset=test_dataset,
+                             batch_size=batch_size,
+                             num_workers=num_workers,
