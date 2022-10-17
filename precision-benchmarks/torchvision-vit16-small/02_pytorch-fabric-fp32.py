@@ -120,3 +120,24 @@ if __name__ == "__main__":
         val_loader=val_loader,
         fabric=fabric,
         scheduler=scheduler
+    )
+
+    end = time.time()
+    elapsed = end-start
+    fabric.print(f"Time elapsed {elapsed/60:.2f} min")
+    fabric.print(f"Memory used: {torch.cuda.max_memory_reserved() / 1e9:.02f} GB")
+
+    #########################################
+    ### 5 Evaluation
+    #########################################
+
+    with torch.no_grad():
+        model.eval()
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
+
+        for (features, targets) in test_loader:
+            outputs = model(features)
+            predicted_labels = torch.argmax(outputs, 1)
+            test_acc.update(predicted_labels, targets)
+
+    fabric.print(f"Test accuracy {test_acc.compute()*100:.2f}%")
