@@ -6,4 +6,6 @@ import torch
 import torch.nn.functional as F
 from torch.optim.lr_scheduler import ExponentialLR
 import torchmetrics
-from torchvi
+from torchvision import transforms
+from torchvision.models import vit_b_16
+from torchvision.models import ViT_B_16_Weig
