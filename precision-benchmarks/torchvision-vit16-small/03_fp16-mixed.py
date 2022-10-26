@@ -19,4 +19,8 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
         train_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
 
         model.train()
-        for batch_idx, (features, targets) in enu
+        for batch_idx, (features, targets) in enumerate(train_loader):
+            model.train()
+
+            ### FORWARD AND BACK PROP
+            logits = mod
