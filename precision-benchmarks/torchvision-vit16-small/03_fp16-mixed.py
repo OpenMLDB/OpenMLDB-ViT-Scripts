@@ -23,4 +23,8 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
             model.train()
 
             ### FORWARD AND BACK PROP
-            logits = mod
+            logits = model(features)
+            loss = F.cross_entropy(logits, targets)
+            fabric.backward(loss)
+
+            ### UPDATE M
