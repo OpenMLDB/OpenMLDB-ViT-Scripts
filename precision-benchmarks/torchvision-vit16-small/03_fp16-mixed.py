@@ -27,4 +27,9 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
             loss = F.cross_entropy(logits, targets)
             fabric.backward(loss)
 
-            ### UPDATE M
+            ### UPDATE MODEL PARAMETERS
+            optimizer.step()
+            optimizer.zero_grad()
+
+            ### LOGGING
+           
