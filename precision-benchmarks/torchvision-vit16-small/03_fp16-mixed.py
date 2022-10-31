@@ -33,4 +33,7 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
 
             ### LOGGING
             if not batch_idx % 300:
-                fabric.print(f"Epoch: {epoch+1:04d}/{num_epochs:04d} | Batch {batch_idx:0
+                fabric.print(f"Epoch: {epoch+1:04d}/{num_epochs:04d} | Batch {batch_idx:04d}/{len(train_loader):04d} | Loss: {loss:.4f}")
+
+            model.eval()
+            with torch.no_grad():
