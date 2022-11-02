@@ -37,3 +37,5 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
 
             model.eval()
             with torch.no_grad():
+                predicted_labels = torch.argmax(logits, 1)
+                train_acc.update(predicted_labels, targets
