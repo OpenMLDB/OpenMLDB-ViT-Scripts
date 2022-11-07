@@ -58,4 +58,7 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
 if __name__ == "__main__":
 
     print("PyTorch:", torch.__version__)
-   
+    print("Lightning:", L.__version__)
+    torch.set_float32_matmul_precision("medium")
+
+    L.seed_everything
