@@ -66,4 +66,5 @@ if __name__ == "__main__":
     ##########################
     ### 1 Loading the Dataset
     ##########################
- 
+    train_transforms = transforms.Compose([transforms.Resize((224, 224)),
+                                         
