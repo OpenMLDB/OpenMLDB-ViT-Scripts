@@ -61,4 +61,9 @@ if __name__ == "__main__":
     print("Lightning:", L.__version__)
     torch.set_float32_matmul_precision("medium")
 
-    L.seed_everything
+    L.seed_everything(123)
+
+    ##########################
+    ### 1 Loading the Dataset
+    ##########################
+ 
