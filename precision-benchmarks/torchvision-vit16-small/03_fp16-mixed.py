@@ -70,4 +70,5 @@ if __name__ == "__main__":
                                            #transforms.RandomCrop((224, 224)),
                                            transforms.ToTensor()])
 
-    test_transf
+    test_transforms = transforms.Compose([transforms.Resize((224, 224)),
+                                          #transforms.Ce
