@@ -90,4 +90,6 @@ if __name__ == "__main__":
     model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
 
     # replace output layer
-    model.heads.head = 
+    model.heads.head = torch.nn.Linear(in_features=768, out_features=10)
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=5
