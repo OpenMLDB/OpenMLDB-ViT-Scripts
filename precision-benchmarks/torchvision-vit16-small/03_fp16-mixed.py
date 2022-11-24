@@ -96,4 +96,7 @@ if __name__ == "__main__":
     scheduler = ExponentialLR(optimizer, gamma=0.9)
 
     #########################################
-    ### 3 Launch F
+    ### 3 Launch Fabric
+    #########################################
+
+    fabric = Fabric(accelerator="cuda", devices=1, precision="16-mixed"
