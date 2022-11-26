@@ -103,4 +103,7 @@ if __name__ == "__main__":
     fabric.launch()
 
     train_loader, val_loader, test_loader = fabric.setup_dataloaders(
-        tr
+        train_loader, val_loader, test_loader)
+    model, optimizer = fabric.setup(model, optimizer)
+
+    #
