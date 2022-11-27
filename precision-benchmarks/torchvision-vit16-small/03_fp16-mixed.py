@@ -110,4 +110,9 @@ if __name__ == "__main__":
     ### 4 Finetuning
     #########################################
 
-    
+    start = time.time()
+    train(
+        num_epochs=3,
+        model=model,
+        optimizer=optimizer,
+ 
