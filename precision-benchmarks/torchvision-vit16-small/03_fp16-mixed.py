@@ -131,4 +131,7 @@ if __name__ == "__main__":
     #########################################
 
     with torch.no_grad():
-        mo
+        model.eval()
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
+
+        for (features, target
