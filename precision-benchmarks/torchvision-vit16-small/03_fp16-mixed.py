@@ -134,4 +134,6 @@ if __name__ == "__main__":
         model.eval()
         test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
 
-        for (features, target
+        for (features, targets) in test_loader:
+            outputs = model(features)
+            predicted_labels = torch.ar
