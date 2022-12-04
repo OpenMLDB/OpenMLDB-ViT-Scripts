@@ -136,4 +136,7 @@ if __name__ == "__main__":
 
         for (features, targets) in test_loader:
             outputs = model(features)
-            predicted_labels = torch.ar
+            predicted_labels = torch.argmax(outputs, 1)
+            test_acc.update(predicted_labels, targets)
+
+    fabric.print(f"Test accuracy {t
