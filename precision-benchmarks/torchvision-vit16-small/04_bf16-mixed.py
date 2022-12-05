@@ -70,3 +70,74 @@ if __name__ == "__main__":
     train_transforms = transforms.Compose([transforms.Resize((224, 224)),
                                            #transforms.RandomCrop((224, 224)),
                                            transforms.ToTensor()])
+
+    test_transforms = transforms.Compose([transforms.Resize((224, 224)),
+                                          #transforms.CenterCrop((224, 224)),
+                                          transforms.ToTensor()])
+
+    train_loader, val_loader, test_loader = get_dataloaders_cifar10(
+        batch_size=16,
+        num_workers=4,
+        train_transforms=train_transforms,
+        test_transforms=test_transforms,
+        validation_fraction=0.1,
+        download=True
+    )
+
+    #########################################
+    ### 2 Initializing the Model
+    #########################################
+
+    model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
+
+    # replace output layer
+    model.heads.head = torch.nn.Linear(in_features=768, out_features=10)
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    scheduler = ExponentialLR(optimizer, gamma=0.9)
+
+    #########################################
+    ### 3 Launch Fabric
+    #########################################
+
+    fabric = Fabric(accelerator="cuda", devices=1, precision="bf16-mixed")
+    fabric.launch()
+
+    train_loader, val_loader, test_loader = fabric.setup_dataloaders(
+        train_loader, val_loader, test_loader)
+    model, optimizer = fabric.setup(model, optimizer)
+
+    #########################################
+    ### 4 Finetuning
+    #########################################
+
+    start = time.time()
+    train(
+        num_epochs=3,
+        model=model,
+        optimizer=optimizer,
+        train_loader=train_loader,
+        val_loader=val_loader,
+        fabric=fabric,
+        scheduler=scheduler
+    )
+
+    end = time.time()
+    elapsed = end-start
+    fabric.print(f"Time elapsed {elapsed/60:.2f} min")
+    fabric.print(f"Memory used: {torch.cuda.max_memory_reserved() / 1e9:.02f} GB")
+
+    #########################################
+    ### 5 Evaluation
+    #########################################
+
+    with torch.no_grad():
+        model.eval()
+        test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
+
+        for (features, targets) in test_loader:
+            outputs = model(features)
+            predicted_labels = torch.argmax(outputs, 1)
+            test_acc.update(predicted_labels, targets)
+
+    fabric.print(f"Test accuracy {test_acc.compute()*100:.2f}%")
