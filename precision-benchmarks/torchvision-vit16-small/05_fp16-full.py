@@ -29,4 +29,8 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
 
             ### UPDATE MODEL PARAMETERS
             optimizer.step()
-            optimizer.zero
+            optimizer.zero_grad()
+
+            ### LOGGING
+            if not batch_idx % 300:
+                fabric.print(f"Epoch: {epoch+1:
