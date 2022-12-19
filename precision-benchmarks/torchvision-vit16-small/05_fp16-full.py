@@ -47,4 +47,7 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
             val_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
 
             for (features, targets) in val_loader:
-                outputs = model(feature
+                outputs = model(features)
+                predicted_labels = torch.argmax(outputs, 1)
+                val_acc.update(predicted_labels, targets)
+
