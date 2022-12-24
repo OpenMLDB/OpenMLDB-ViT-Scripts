@@ -72,4 +72,6 @@ if __name__ == "__main__":
 
     test_transforms = transforms.Compose([transforms.Resize((224, 224)),
                                           #transforms.CenterCrop((224, 224)),
-             
+                                          transforms.ToTensor()])
+
+    train_loader, val_loader, test_loader = get_dataloa
