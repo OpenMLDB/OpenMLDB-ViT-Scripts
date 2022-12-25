@@ -74,4 +74,8 @@ if __name__ == "__main__":
                                           #transforms.CenterCrop((224, 224)),
                                           transforms.ToTensor()])
 
-    train_loader, val_loader, test_loader = get_dataloa
+    train_loader, val_loader, test_loader = get_dataloaders_cifar10(
+        batch_size=16,
+        num_workers=4,
+        train_transforms=train_transforms,
+        te
