@@ -112,4 +112,8 @@ if __name__ == "__main__":
 
     start = time.time()
     train(
-        num_e
+        num_epochs=3,
+        model=model,
+        optimizer=optimizer,
+        train_loader=train_loader,
+        val_loader=val
