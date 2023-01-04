@@ -107,4 +107,9 @@ if __name__ == "__main__":
     model, optimizer = fabric.setup(model, optimizer)
 
     #########################################
-    ### 4 Fi
+    ### 4 Finetuning
+    #########################################
+
+    start = time.time()
+    train(
+        num_e
