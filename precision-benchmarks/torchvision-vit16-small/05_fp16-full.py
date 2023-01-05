@@ -116,4 +116,10 @@ if __name__ == "__main__":
         model=model,
         optimizer=optimizer,
         train_loader=train_loader,
-        val_loader=val
+        val_loader=val_loader,
+        fabric=fabric,
+        scheduler=scheduler
+    )
+
+    end = time.time()
+    elaps
