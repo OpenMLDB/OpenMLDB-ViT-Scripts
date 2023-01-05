@@ -122,4 +122,6 @@ if __name__ == "__main__":
     )
 
     end = time.time()
-    elaps
+    elapsed = end-start
+    fabric.print(f"Time elapsed {elapsed/60:.2f} min")
+    fabric.print(f"Memory used: {torch.cuda.max_memory_re
