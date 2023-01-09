@@ -135,4 +135,6 @@ if __name__ == "__main__":
         test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=10).to(fabric.device)
 
         for (features, targets) in test_loader:
-            outputs
+            outputs = model(features)
+            predicted_labels = torch.argmax(outputs, 1)
+            test_acc.update(predicted_labels, t
