@@ -28,4 +28,8 @@ def train(num_epochs, model, optimizer, train_loader, val_loader, fabric, schedu
             fabric.backward(loss)
 
             ### UPDATE MODEL PARAMETERS
-            opt
+            optimizer.step()
+            optimizer.zero_grad()
+
+            ### LOGGING
+            if not batch_idx % 3
