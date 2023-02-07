@@ -66,4 +66,6 @@ if __name__ == "__main__":
     ##########################
     ### 1 Loading the Dataset
     ##########################
-    train_transforms = transforms.Compose([
+    train_transforms = transforms.Compose([transforms.Resize((224, 224)),
+                                           #transforms.RandomCrop((224, 224)),
+   
