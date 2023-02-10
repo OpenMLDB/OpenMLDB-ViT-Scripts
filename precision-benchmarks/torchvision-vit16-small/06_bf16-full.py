@@ -78,4 +78,9 @@ if __name__ == "__main__":
         batch_size=16,
         num_workers=4,
         train_transforms=train_transforms,
-        t
+        test_transforms=test_transforms,
+        validation_fraction=0.1,
+        download=True
+    )
+
+    #############################
