@@ -87,4 +87,7 @@ if __name__ == "__main__":
     ### 2 Initializing the Model
     #########################################
 
-    model = vit_
+    model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
+
+    # replace output layer
+    model.heads.head = torch.nn.Linear(in_features=768, out_fea
