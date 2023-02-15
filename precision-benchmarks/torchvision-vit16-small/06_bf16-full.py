@@ -102,4 +102,6 @@ if __name__ == "__main__":
     fabric = Fabric(accelerator="cuda", devices=1, precision="bf16-true")
     fabric.launch()
 
-    train_loader
+    train_loader, val_loader, test_loader = fabric.setup_dataloaders(
+        train_loader, val_loader, test_loader)
+    model, optimiz
