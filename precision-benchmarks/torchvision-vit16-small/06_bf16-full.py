@@ -117,4 +117,10 @@ if __name__ == "__main__":
         optimizer=optimizer,
         train_loader=train_loader,
         val_loader=val_loader,
-        f
+        fabric=fabric,
+        scheduler=scheduler
+    )
+
+    end = time.time()
+    elapsed = end-start
+    fabric.print(f"Time
