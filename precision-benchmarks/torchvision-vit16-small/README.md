@@ -4,3 +4,4 @@
 | [02_pytorch-fabric-fp32.py](http://02_pytorch-fabric-fp32.py) | vit_b_16 | medium           | 7.53 min | 3.71 GB | 97.87%         | 95.54%        |
 | [03_fp16-mixed.py](http://03_fp16-mixed.py)                  | vit_b_16 | medium           | 9.38 min | 3.03 GB | 97.94%         | 96.09%        |
 | [04_bf16-mixed.py](http://04_bf16-mixed.py/)                 | vit_b_16 | medium           | 8.50 min | 3.03 GB | 97.86%         | 95.16%        |
+| [05_fp16-full.py](http://05_fp16-full.py)                    | vit_b_16 | medium           | 7.22 
