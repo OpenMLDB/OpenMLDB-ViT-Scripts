@@ -8,4 +8,5 @@
 | [06_bf16-full.py](http://06_bf16-full.py)                    | vit_b_16 | medium           | 7.00 min | 1.95 GB | 99.69%         | 97.52%        |
 
 | PyTorch: 2.1.0+cu121 |
-| -----
+| -------------------- |
+| Lightning: 2.1.0     |
