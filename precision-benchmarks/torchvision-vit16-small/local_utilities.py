@@ -18,4 +18,6 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
     if test_transforms is None:
         test_transforms = transforms.ToTensor()
 
-    train_dataset = datasets.C
+    train_dataset = datasets.CIFAR10(root='data',
+                                     train=True,
+                                     transf
