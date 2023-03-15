@@ -24,4 +24,5 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
                                      download=download)
 
     valid_dataset = datasets.CIFAR10(root='data',
-      
+                                     train=True,
+                                     transfor
