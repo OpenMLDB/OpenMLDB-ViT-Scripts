@@ -32,4 +32,6 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
                                     transform=test_transforms)
 
     if validation_fraction is not None:
-        num
+        num = int(validation_fraction * 50000)
+        train_indices = range(0, 50000 - num)
+        valid_indices = range(50000 - 
