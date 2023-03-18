@@ -37,4 +37,7 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
         valid_indices = range(50000 - num, 50000)
 
         train_sampler = SubsetRandomSampler(train_indices)
-        valid_sampler = Subset
+        valid_sampler = SubsetRandomSampler(valid_indices)
+
+        valid_loader = DataLoader(dataset=valid_dataset,
+                         
