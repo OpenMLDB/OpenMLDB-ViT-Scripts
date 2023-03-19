@@ -40,4 +40,6 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
         valid_sampler = SubsetRandomSampler(valid_indices)
 
         valid_loader = DataLoader(dataset=valid_dataset,
-                         
+                                  batch_size=batch_size,
+                                  num_workers=num_workers,
+               
