@@ -64,4 +64,5 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
 
     if validation_fraction is None:
         return train_loader, test_loader
-    el
+    else:
+        return train_loader, valid_loader, test_loader
